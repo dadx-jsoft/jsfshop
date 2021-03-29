@@ -17,6 +17,7 @@ import com.dht.service.ManufacturerService;
 @SessionScoped
 public class CateBean implements Serializable {
 	private static final long serialVersionUID = 1L;
+	
 	private final static CategoryService cateService = new CategoryService();
 	private final static ManufacturerService manuService = new ManufacturerService();
 	

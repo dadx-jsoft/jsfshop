@@ -22,8 +22,10 @@ public class Product implements Serializable {
 	private Category category;
 
 	@ManyToMany
-	@JoinTable(name = "prod_manufacturer", joinColumns = { @JoinColumn(name = "product_id") }, inverseJoinColumns = {
-			@JoinColumn(name = "manufacturer_id") })
+	@JoinTable(name = "prod_manufacturer", 
+			joinColumns = { @JoinColumn(name = "product_id") }, 
+			inverseJoinColumns = { @JoinColumn(name = "manufacturer_id") }
+	)
 	private Set<Manufacturer> manufacturers;
 
 	public int getId() {

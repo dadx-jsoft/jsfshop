@@ -16,6 +16,7 @@ import com.dht.service.ProductService;
 //@RequestScoped
 public class ProductBean implements Serializable {
 	private static final long serialVersionUID = 1L;
+	
 	private final static ProductService productSevice = new ProductService();
 
 	public ProductBean() {
