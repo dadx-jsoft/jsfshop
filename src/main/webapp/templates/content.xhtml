@@ -1,6 +1,8 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 				xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-				xmlns:h="http://xmlns.jcp.org/jsf/html">  
+				xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:c="http://java.sun.com/jsp/jstl/core">  
 	<!-- Product Section Begin -->
 	<section class="product spad">
 	    <div class="container">
@@ -21,194 +23,31 @@
 	            </div>
 	        </div>
 	        <div class="row property__gallery">
+	        	
+	        	<c:forEach items="#{productBean.products}" var="p">
 	            <div class="col-lg-3 col-md-4 col-sm-6 mix women">
 	                <div class="product__item">
-	                    <div class="product__item__pic set-bg" data-setbg="img/product/product-1.jpg">
-	                    	<h:graphicImage name="product/product-1.jpg" library="img" />
+	                    <div class="product__item__pic set-bg">
+	                    	<h:graphicImage name="#{p.image}" library="images" />
 	                        <div class="label new">New</div>
-	                        <ul class="product__hover">
-	                            <li><a href="img/product/product-1.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
-	                            <li><a href="#"><span class="icon_heart_alt"></span></a></li>
-	                            <li><a href="#"><span class="icon_bag_alt"></span></a></li>
-	                        </ul>
-	                    </div>
-	                    <div class="product__item__text">
-	                        <h6><a href="#">Túi đeo chéo da Nam BALC26BN</a></h6>
-	                        <div class="rating">
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
+	                        <div class="text-center">
+	                        	<h:form>
+			                    	<h:commandButton value="#{pMsg['product.addToCart']}" styleClass="btn btn-warning">
+			                            <f:ajax listener="#{cartBean.addItemToCart(p.id,p.name,p.price)}" />
+			                        </h:commandButton>
+			                        <h:commandButton value="#{pMsg['product.detail']}" styleClass="btn btn-info"/>
+			                    </h:form>
 	                        </div>
-	                        <div class="product__price">360,000₫</div>
+	                        <div class="product__item__text">
+		                    	
+		                        <h6><a href="#">#{p.name}</a></h6>
+		                        <div class="product__price">#{p.price} ₫</div>
+		                    </div>
 	                    </div>
 	                </div>
 	            </div>
-	            <div class="col-lg-3 col-md-4 col-sm-6 mix men">
-	                <div class="product__item">
-	                    <div class="product__item__pic set-bg" data-setbg="img/product/product-2.jpg">
-	                    	<h:graphicImage name="product/product-2.jpg" library="img" />
-	                        <ul class="product__hover">
-	                            <li><a href="img/product/product-2.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
-	                            <li><a href="#"><span class="icon_heart_alt"></span></a></li>
-	                            <li><a href="#"><span class="icon_bag_alt"></span></a></li>
-	                        </ul>
-	                    </div>
-	                    <div class="product__item__text">
-	                        <h6><a href="#">Túi Đeo Chéo Nữ LATA HN73BD</a></h6>
-	                        <div class="rating">
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                        </div>
-	                        <div class="product__price">390,000₫</div>
-	                    </div>
-	                </div>
-	            </div>
-	            <div class="col-lg-3 col-md-4 col-sm-6 mix accessories">
-	                <div class="product__item">
-	                    <div class="product__item__pic set-bg" data-setbg="img/product/product-3.jpg">
-	                    	<h:graphicImage name="product/product-3.jpg" library="img" />
-	                        <div class="label stockout">Hết hàng</div>
-	                        <ul class="product__hover">
-	                            <li><a href="img/product/product-3.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
-	                            <li><a href="#"><span class="icon_heart_alt"></span></a></li>
-	                            <li><a href="#"><span class="icon_bag_alt"></span></a></li>
-	                        </ul>
-	                    </div>
-	                    <div class="product__item__text">
-	                        <h6><a href="#">Túi Đeo Chéo Nữ LATA HN78D</a></h6>
-	                        <div class="rating">
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                        </div>
-	                        <div class="product__price">420,000₫</div>
-	                    </div>
-	                </div>
-	            </div>
-	            <div class="col-lg-3 col-md-4 col-sm-6 mix cosmetic">
-	                <div class="product__item">
-	                    <div class="product__item__pic set-bg" data-setbg="img/product/product-4.jpg">
-	                    	<h:graphicImage name="product/product-4.jpg" library="img" />
-	                        <ul class="product__hover">
-	                            <li><a href="img/product/product-4.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
-	                            <li><a href="#"><span class="icon_heart_alt"></span></a></li>
-	                            <li><a href="#"><span class="icon_bag_alt"></span></a></li>
-	                        </ul>
-	                    </div>
-	                    <div class="product__item__text">
-	                        <h6><a href="#">Túi Đeo Chéo Nữ LATA HN81D</a></h6>
-	                        <div class="rating">
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                        </div>
-	                        <div class="product__price">420,000₫</div>
-	                    </div>
-	                </div>
-	            </div>
-	            <div class="col-lg-3 col-md-4 col-sm-6 mix kid">
-	                <div class="product__item">
-	                    <div class="product__item__pic set-bg" data-setbg="img/product/product-5.jpg">
-	                    	<h:graphicImage name="product/product-5.jpg" library="img" />
-	                        <ul class="product__hover">
-	                            <li><a href="img/product/product-5.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
-	                            <li><a href="#"><span class="icon_heart_alt"></span></a></li>
-	                            <li><a href="#"><span class="icon_bag_alt"></span></a></li>
-	                        </ul>
-	                    </div>
-	                    <div class="product__item__text">
-	                        <h6><a href="#">Túi Đeo Chéo Nữ LATA HN80HP</a></h6>
-	                        <div class="rating">
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                        </div>
-	                        <div class="product__price">470,000₫</div>
-	                    </div>
-	                </div>
-	            </div>
-	            <div class="col-lg-3 col-md-4 col-sm-6 mix women men kid accessories cosmetic">
-	                <div class="product__item">
-	                    <div class="product__item__pic set-bg" data-setbg="img/product/product-6.jpg">
-	                    	<h:graphicImage name="product/product-6.jpg" library="img" />
-	                        <div class="label sale">Sale</div>
-	                        <ul class="product__hover">
-	                            <li><a href="img/product/product-6.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
-	                            <li><a href="#"><span class="icon_heart_alt"></span></a></li>
-	                            <li><a href="#"><span class="icon_bag_alt"></span></a></li>
-	                        </ul>
-	                    </div>
-	                    <div class="product__item__text">
-	                        <h6><a href="#">Túi Đeo Chéo Da Nam Lata TN18BD</a></h6>
-	                        <div class="rating">
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                        </div>
-	                        <div class="product__price">540,000₫</div>
-	                    </div>
-	                </div>
-	            </div>
-	            <div class="col-lg-3 col-md-4 col-sm-6 mix women men kid accessories cosmetic">
-	                <div class="product__item">
-	                    <div class="product__item__pic set-bg" data-setbg="img/product/product-7.jpg">
-	                    	<h:graphicImage name="product/product-7.jpg" library="img" />
-	                        <ul class="product__hover">
-	                            <li><a href="img/product/product-7.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
-	                            <li><a href="#"><span class="icon_heart_alt"></span></a></li>
-	                            <li><a href="#"><span class="icon_bag_alt"></span></a></li>
-	                        </ul>
-	                    </div>
-	                    <div class="product__item__text">
-	                        <h6><a href="#">Túi Đeo Chéo Da Nam Lata TN14N</a></h6>
-	                        <div class="rating">
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                        </div>
-	                        <div class="product__price">450,000₫</div>
-	                    </div>
-	                </div>
-	            </div>
-	            <div class="col-lg-3 col-md-4 col-sm-6 mix women men kid accessories cosmetic">
-	                <div class="product__item">
-	                    <div class="product__item__pic set-bg" data-setbg="img/product/product-8.jpg">
-	                    	<h:graphicImage name="product/product-8.jpg" library="img" />
-	                        <div class="label">Sale</div>
-	                        <ul class="product__hover">
-	                            <li><a href="img/product/product-8.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
-	                            <li><a href="#"><span class="icon_heart_alt"></span></a></li>
-	                            <li><a href="#"><span class="icon_bag_alt"></span></a></li>
-	                        </ul>
-	                    </div>
-	                    <div class="product__item__text">
-	                        <h6><a href="#">Túi Đeo Chéo Da Nam LATA BC23BD</a></h6>
-	                        <div class="rating">
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                            <i class="fa fa-star"></i>
-	                        </div>
-	                        <div class="product__price">360,000₫</div>
-	                    </div>
-	                </div>
-	            </div>
+	            </c:forEach>
+	            
 	        </div>
 	    </div>
 	</section>

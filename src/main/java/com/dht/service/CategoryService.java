@@ -25,4 +25,11 @@ public class CategoryService {
 			return session.createQuery(query).getResultList();
 		} 
 	}
+	
+	public Category getCategoryById(int cateId) {
+		try(Session session = factory.openSession()){
+			return session.get(Category.class, cateId);
+		}
+	}
+	
 }

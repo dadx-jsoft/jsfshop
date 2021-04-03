@@ -26,4 +26,10 @@ public class ManufacturerService {
 
 		}
 	}
+	
+	public Manufacturer getManufacturerById(int manuId) {
+		try(Session session = factory.openSession()) {
+			return session.get(Manufacturer.class, manuId);
+		}
+	}
 }

@@ -16,16 +16,15 @@ public class Product implements Serializable {
 	private String name;
 	private String description;
 	private BigDecimal price;
+	private String image;
 
 	@ManyToOne
 	@JoinColumn(name = "category_id")
 	private Category category;
 
-	@ManyToMany
-	@JoinTable(name = "prod_manufacturer", 
-			joinColumns = { @JoinColumn(name = "product_id") }, 
-			inverseJoinColumns = { @JoinColumn(name = "manufacturer_id") }
-	)
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "prod_manufacturer", joinColumns = { @JoinColumn(name = "product_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "manufacturer_id") })
 	private Set<Manufacturer> manufacturers;
 
 	public int getId() {
@@ -58,6 +57,14 @@ public class Product implements Serializable {
 
 	public void setPrice(BigDecimal price) {
 		this.price = price;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 	public Category getCategory() {

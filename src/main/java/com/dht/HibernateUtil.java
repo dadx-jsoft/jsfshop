@@ -10,7 +10,10 @@ import org.hibernate.service.ServiceRegistry;
 
 import com.dht.pojo.Category;
 import com.dht.pojo.Manufacturer;
+import com.dht.pojo.Payment;
+import com.dht.pojo.PaymentDetail;
 import com.dht.pojo.Product;
+import com.dht.pojo.User;
 
 public class HibernateUtil {
 
@@ -21,17 +24,17 @@ public class HibernateUtil {
 
 		// Hibernate settings equivalent to hibernate.cfg.xml's properties
 		Properties props = new Properties();
-//		props.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
-//		props.put(Environment.URL, "jdbc:mysql://localhost:3306/jsfsaledb?useSSL=false");
-//		props.put(Environment.USER, "root");
-//		props.put(Environment.PASS, "root");
-//		props.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
-		
-		props.put(Environment.DRIVER, "org.postgresql.Driver");
-		props.put(Environment.URL, "jdbc:postgresql://localhost:5433/jsfsaledb?useSSL=false");
-		props.put(Environment.USER, "postgres");
+		props.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
+		props.put(Environment.URL, "jdbc:mysql://localhost:3306/jsfsaledb?useSSL=false");
+		props.put(Environment.USER, "root");
 		props.put(Environment.PASS, "root");
-		props.put(Environment.DIALECT, "org.hibernate.dialect.PostgreSQLDialect");
+		props.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
+		
+//		props.put(Environment.DRIVER, "org.postgresql.Driver");
+//		props.put(Environment.URL, "jdbc:postgresql://localhost:5433/jsfsaledb?useSSL=false");
+//		props.put(Environment.USER, "postgres");
+//		props.put(Environment.PASS, "root");
+//		props.put(Environment.DIALECT, "org.hibernate.dialect.PostgreSQLDialect");
 
 		props.put(Environment.SHOW_SQL, "true");
 //
@@ -44,6 +47,9 @@ public class HibernateUtil {
 		conf.addAnnotatedClass(Category.class);
 		conf.addAnnotatedClass(Product.class);
 		conf.addAnnotatedClass(Manufacturer.class);
+		conf.addAnnotatedClass(User.class);
+		conf.addAnnotatedClass(Payment.class);
+		conf.addAnnotatedClass(PaymentDetail.class);
 
 		ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
 				.applySettings(conf.getProperties()).build();
