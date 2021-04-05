@@ -29,7 +29,7 @@ public class UserBean {
 			u.setEmail(email);
 			u.setPassword(password);
 			u.setUsername(username);
-
+			u.setuRole("USER");
 			if (userService.addUser(u))
 				return "login?faces-redirect=true";
 		}
