@@ -12,10 +12,10 @@
     </h:head>
     <h:body>
         <ui:composition template="/templates/base.xhtml">
-        	<ui:define name="header"></ui:define>
         	<ui:define name="content">
         		<div class="container">
         			<h1 class="text-center">#{pMsg['product.admin']}</h1>
+        			
         			<h:link value="#{pMsg['product.add']}" outcome="add-product?faces-redirect=true" styleClass="btn btn-warning"/>
         			<h:dataTable var="product" value="#{productBean.products}" styleClass="table">
         				<h:column>

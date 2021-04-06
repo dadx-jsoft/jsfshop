@@ -10,6 +10,6 @@
 	
 	<context-param>
 		<param-name>uploadPath</param-name>
-		<param-value>D:\devpro\backend\code\jsfshop\src\main\webapp\resources\images\upload</param-value>
+		<param-value>C:\eclipsewp\learn-steve\jsfshop\src\main\webapp\resources\images\upload</param-value>
 	</context-param>
 </web-app>

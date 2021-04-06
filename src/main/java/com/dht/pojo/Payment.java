@@ -15,7 +15,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "payment")
+@Table(name = "payment", schema = "public")
 public class Payment implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id

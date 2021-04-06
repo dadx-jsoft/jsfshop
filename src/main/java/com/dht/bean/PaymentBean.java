@@ -17,14 +17,13 @@ import com.dht.pojo.User;
 import com.dht.service.PaymentService;
 import com.dht.service.ProductService;
 
-@ManagedBean
+//@ManagedBean
 @Named
 @RequestScoped
 public class PaymentBean {
 	private static final ProductService productService = new ProductService();
 	private static final PaymentService paymentService = new PaymentService();
 	public PaymentBean() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public String add() {

@@ -1,5 +1,6 @@
 package com.dht.bean;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,13 +14,14 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
-@ManagedBean
+//@ManagedBean
 @Named
 @SessionScoped
-public class CartBean {
+public class CartBean implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	public CartBean() {
-		// TODO Auto-generated constructor stub
 	}
 
 	@PostConstruct
@@ -31,18 +33,19 @@ public class CartBean {
 	}
 
 	public List<Map<String, Object>> getCarts() {
-		Map<Integer, Object> cart = (Map<Integer, Object>) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("cart");
-		
+		Map<Integer, Object> cart = (Map<Integer, Object>) FacesContext.getCurrentInstance().getExternalContext()
+				.getSessionMap().get("cart");
+
 		List<Map<String, Object>> kq = new ArrayList<>();
-		for(Object o : cart.values()) {
+		for (Object o : cart.values()) {
 			Map<String, Object> d = (Map<String, Object>) o;
 			kq.add(d);
 		}
-		
+
 		return kq;
 	}
 
-	public String addItemToCart(int productId, String productName, BigDecimal price) {
+	public void addItemToCart(int productId, String productName, BigDecimal price) {
 		Map<Integer, Object> cart = (Map<Integer, Object>) FacesContext.getCurrentInstance().getExternalContext()
 				.getSessionMap().get("cart");
 		if (cart.get(productId) == null) {
@@ -57,7 +60,18 @@ public class CartBean {
 			Map<String, Object> data = (Map<String, Object>) cart.get(productId);
 			data.put("count", Integer.parseInt(data.get("count").toString()) + 1);
 		}
-		return "";
+	}
+	
+	
+	public int getSoLuongSanPham() {
+		Map<Integer, Object> cart = (Map<Integer, Object>) FacesContext.getCurrentInstance().getExternalContext()
+				.getSessionMap().get("cart");
+		int soLuongSanPham = 0;
+		for (Object o : cart.values()) {
+			Map<String, Object> d = (Map<String, Object>) o;
+			soLuongSanPham += Integer.parseInt(d.get("count").toString());
+		}
+		return soLuongSanPham;
 	}
 
 }

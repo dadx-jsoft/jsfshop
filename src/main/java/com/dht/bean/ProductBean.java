@@ -19,7 +19,7 @@ import com.dht.pojo.Manufacturer;
 import com.dht.pojo.Product;
 import com.dht.service.ProductService;
 
-@ManagedBean
+//@ManagedBean
 @Named("productBean")
 @SessionScoped
 //@RequestScoped

@@ -1,73 +1,65 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-				xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-				xmlns:h="http://xmlns.jcp.org/jsf/html"
-				xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"> 
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 	<!-- Header Section Begin -->
-    <header class="header">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-xl-3 col-lg-2">
-                    <div class="header__logo">
-                        <a href="./index.html">
-                        	<h:graphicImage name="logo.png" library="img" />
-                        </a>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-7">
-                    <nav class="header__menu">
-                        <ul>
-                            <li class="active"><a href="./index.html">TRANG CHỦ</a></li>
-                            <li><a href="#">NAM</a>
-                                <ul class="dropdown">
-                                	<c:forEach var="cat" items="#{cateBean.categories}">
-                                		<li><a href="#">#{cat.name}</a></li>
-                                	</c:forEach>
-                                </ul>
-                            </li>
-                            <li><a href="./shop.html">Shop</a></li>
-                            <li><a href="#">Pages</a>
-                                <ul class="dropdown">
-                                    <li><a href="./product-details.html">Chi tiết sản phẩm</a></li>
-                                    <li><a href="./shop-cart.html">Giỏ hàng</a></li>
-                                    <li><a href="./checkout.html">Chi tiết hóa đơn</a></li>
-                                    <li><a href="./blog-details.html">Blog Details</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="./blog.html">BLOG</a></li>
-                            <li><a href="./contact.html">LIÊN HỆ</a></li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="col-lg-3">
-                    <div class="header__right">
-                        <div class="header__right__auth">
-                        	<c:if test="#{facesContext.externalContext.sessionMap.get('user') != null}">
-                        	<a href="#">#{facesContext.externalContext.sessionMap.get('user').name}</a>
-                        	<h:form>
-                        		<h:commandButton action="#{userBean.logout()}" value="Đăng xuất"/>
-                        	</h:form>
-                        	</c:if>
-                        	<c:if test="#{facesContext.externalContext.sessionMap.get('user') == null}">
-                        	<a href="#">Đăng nhập</a>
-                        	<a href="#">Đăng ký</a>
-                        	</c:if>
-                        </div>
-                        <ul class="header__right__widget">
-                            <li><span class="icon_search search-switch"></span></li>
-                            <li><a href="#"><span class="icon_heart_alt"></span>
-                                <div class="tip">2</div>
-                            </a></li>
-                            <li><a href="#"><span class="icon_bag_alt"></span>
-                                <div class="tip">2</div>
-                            </a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="canvas__open">
-                <i class="fa fa-bars"></i>
-            </div>
-        </div>
-    </header>
-    <!-- Header Section End -->
+	<header class="header">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xl-3 col-lg-2">
+					<div class="header__logo">
+						<a href="./index.html"> <h:graphicImage name="logo.png"
+								library="img" />
+						</a>
+					</div>
+				</div>
+				<div class="col-xl-6 col-lg-7">
+					<nav class="header__menu">
+						<ul>
+							<li class="active"><a href="./index.html">TRANG CHỦ</a></li>
+							<li><a href="#">Danh mục</a>
+								<ul class="dropdown">
+									<c:forEach var="cat" items="#{cateBean.categories}">
+										<li><a href="#">#{cat.name}</a></li>
+									</c:forEach>
+								</ul></li>
+							<li><a href="shop-cart">Giỏ hàng</a></li>
+						</ul>
+					</nav>
+				</div>
+				<div class="col-lg-3">
+					<div class="header__right">
+						<div class="header__right__auth">
+							<c:if
+								test="#{facesContext.externalContext.sessionMap.get('user') != null}">
+								<a href="#">#{facesContext.externalContext.sessionMap.get('user').name}</a>
+								<h:form>
+									<h:commandButton action="#{userBean.logout()}"
+										value="Đăng xuất" />
+								</h:form>
+							</c:if>
+							<c:if
+								test="#{facesContext.externalContext.sessionMap.get('user') == null}">
+								<a href="#">Đăng nhập</a>
+								<a href="#">Đăng ký</a>
+							</c:if>
+						</div>
+						<ul class="header__right__widget">
+							<li><a href="#"><span class="icon_bag_alt"></span>
+									<div class="tip">
+										<h:outputText id="bag_value" value="#{cartBean.soLuongSanPham}"/>
+									</div> 
+								</a>
+							</li>
+									
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="canvas__open">
+				<i class="fa fa-bars"></i>
+			</div>
+		</div>
+	</header>
+	<!-- Header Section End -->
 </ui:composition>

@@ -12,7 +12,7 @@ import com.dht.pojo.Manufacturer;
 import com.dht.service.CategoryService;
 import com.dht.service.ManufacturerService;
 
-@ManagedBean
+//@ManagedBean
 @Named
 @SessionScoped
 public class CateBean implements Serializable {
@@ -22,7 +22,6 @@ public class CateBean implements Serializable {
 	private final static ManufacturerService manuService = new ManufacturerService();
 	
 	public CateBean() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public List<Category> getCategories() {

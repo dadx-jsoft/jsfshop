@@ -9,7 +9,7 @@ import javax.persistence.Transient;
 import com.dht.pojo.User;
 import com.dht.service.UserService;
 
-@ManagedBean
+//@ManagedBean
 @Named
 @RequestScoped
 public class UserBean {
@@ -57,7 +57,6 @@ public class UserBean {
 		return "login?faces-redirect=true";
 	}
 	public UserBean() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public String getName() {
