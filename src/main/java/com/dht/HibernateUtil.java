@@ -38,7 +38,7 @@ public class HibernateUtil {
 		props.put(Environment.PASS, "postgres");
 		props.put(Environment.DIALECT, "org.hibernate.dialect.PostgreSQLDialect");
 
-		props.put(Environment.SHOW_SQL, "true");
+//		props.put(Environment.SHOW_SQL, "true");
 		
 //		props.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
 //

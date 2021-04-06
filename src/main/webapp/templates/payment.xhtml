@@ -1,0 +1,36 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+	<h1 class="text-center">#{pMsg['cart.subject']}</h1>
+	<div class="container">
+		<h:messages />
+		<h:dataTable var="cart" value="#{cartBean.carts}" styleClass="table">
+			<h:column>
+				<f:facet name="header">#{pMsg['product.id']}</f:facet>
+					#{cart['productId']}
+				</h:column>
+			<h:column>
+				<f:facet name="header">#{pMsg['product.name']}</f:facet>
+					#{cart['productName']}
+				</h:column>
+			<h:column>
+				<f:facet name="header">#{pMsg['product.price']}</f:facet>
+					#{cart['productPrice']}
+				</h:column>
+			<h:column>
+				<f:facet name="header">#{pMsg['cart.count']}</f:facet>
+					#{cart['count']}
+				</h:column>
+			<h:column>
+				<f:facet name="header"></f:facet>
+			</h:column>
+		</h:dataTable>
+		<h:form>
+			<h:commandButton action="#{paymentBean.add()}" value="Thanh toán"
+				styleClass="btn btn-warning" />
+		</h:form>
+	</div>
+</ui:composition>

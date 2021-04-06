@@ -1,0 +1,44 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+	<div class="container">
+		<h1 class="text-center">Đăng ký người dùng</h1>
+
+		<h:form>
+			<h:messages />
+			<div class="form-group">
+				<h:outputLabel value="Họ và tên" />
+				<h:inputText id="txtName" value="#{userBean.name}"
+					styleClass="form-control" />
+			</div>
+			<div class="form-group">
+				<h:outputLabel value="Email" />
+				<h:inputText id="txtEmail" value="#{userBean.email}"
+					styleClass="form-control" />
+			</div>
+			<div class="form-group">
+				<h:outputLabel value="Tên đăng nhập" />
+				<h:inputText id="txtUsername" value="#{userBean.username}"
+					styleClass="form-control" />
+			</div>
+			<div class="form-group">
+				<h:outputLabel value="Mật khẩu" />
+				<h:inputSecret id="txtPassword" value="#{userBean.password}"
+					styleClass="form-control" />
+			</div>
+			<div class="form-group">
+				<h:outputLabel value="Xác nhận mật khẩu" />
+				<h:inputSecret id="txtConfirmPassword"
+					value="#{userBean.confirmPassword}" styleClass="form-control" />
+			</div>
+			<div class="form-group">
+				<h:commandButton value="Đăng ký" action="#{userBean.register()}"
+					styleClass="btn btn-warning" />
+			</div>
+		</h:form>
+	</div>
+
+</ui:composition>

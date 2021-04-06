@@ -23,9 +23,23 @@
         <ui:insert name="header">
 			<ui:include src="header.xhtml" />
 		</ui:insert>
-		<ui:insert name="content">
-			<ui:include src="content.xhtml" />
-		</ui:insert>
+		<!-- <h:panelGroup id="menu" layout="block">
+		    <h:form>
+		        <f:ajax render=":content">
+		            <ul>
+		                <li><h:commandLink value="product-list" action="#{bean.setPage('product-list')}" /></li>            
+		                <li><h:commandLink value="products" action="#{bean.setPage('products')}" /></li>            
+		                <li><h:commandLink value="login" action="#{bean.setPage('login')}" /></li>
+		                <li><h:commandLink value="register" action="#{bean.setPage('register')}" /></li>
+		                <li><h:commandLink value="payment" action="#{bean.setPage('payment')}" /></li>            
+		            </ul>
+		        </f:ajax>
+		    </h:form>
+		</h:panelGroup> -->
+		<h:panelGroup id="content" layout="block">
+		    <ui:include src="#{bean.page}.xhtml" />
+		</h:panelGroup>
+		
 		<ui:insert name="footer">
 			<ui:include src="footer.xhtml" />
 		</ui:insert>
